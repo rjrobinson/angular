@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en-us">
+    <title>Learn and Understand Angular.js </title>
+    <meta http-equiv="X-UA-Compatable" content="IE-Edge">
+    <meta charset="UTF-8">
+    <!--  -->
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!--  -->
+    <!-- load Angular.js via CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.3.15/angular-messages.min.js"></script>
+    <script src="//code.angularjs.org/1.3.15/angular-resource.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="continer">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">AngularJS</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div ng-controller="mainController">
+            <div>
+                <label>What is your twitter Handle?</label>
+                <input ng-model="handle" type="text" />
+            </div>
+            <hr />
+            <h1><a href="//twitter.com/{{ handle }}">twitter.com/{{ handle }}</a></h1>
+        </div>
+    </div>
+</body>
+
+</html>
