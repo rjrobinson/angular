@@ -17,46 +17,79 @@ myApp.config(function($routeProvider) {
         .when('/second', {
             templateUrl: 'pages/second.html',
             controller: 'secondController'
-        })
+        });
 
 });
 
-myApp.service('nameService', function() {
-
-    var self = this;
-    this.name = "RJ Robinson";
-
-    this.nameLength = function() {
-        return self.name.length
-    };
-
-})
 
 // CONTROLLERS
-myApp.controller('mainController', ['$scope', '$log', 'nameService',
+myApp.controller('mainController', ['$scope', '$log',
 
-    function($scope, $log, nameService) {
+    function($scope, $log) {
         // Controller
-        $scope.$watch('name', function() {
-            nameService.name = $scope.name
-        })
+        $scope.people = [{
+            name: "RJ Robinson",
+            address: "980 Newton Street",
+            city: "North Brunswick",
+            state: "NJ",
+            zip: "08902"
+        }, {
+            name: "Ryan Robinson",
+            address: "9123 Gardeina Street",
+            city: "West Palm Beach",
+            state: "FL",
+            zip: "33434"
+        }, {
+            name: "Sue Freeman",
+            address: "759 Sycamore Drive",
+            city: "Brick",
+            state: "NJ",
+            zip: "08723"
+        }];
 
-        $scope.name = nameService.name;
+        $scope.formattedAddress = function(person) {
+            return person.address + ", " + person.city + ", " + person.state + " " + person.zip;
+        };
 
     }
 ]);
 
 
-myApp.controller('secondController', ['$scope', '$log', 'nameService',
+myApp.controller('secondController', ['$scope', '$log',
 
-    function($scope, $log, nameService) {
+    function($scope, $log) {
         // Controller
-
-        $scope.name = nameService.name;
-
-        $scope.$watch('name', function() {
-            nameService.name = $scope.name
-        })
 
     }
 ]);
+
+
+myApp.directive("searchResult", function() {
+    return {
+        restrict: 'ACEM',
+
+        templateUrl: 'directives/searchresult.html',
+
+        replace: true,
+
+        scope: {
+            personObject: "=",
+            formattedAddressFunction: "&"
+        },
+
+        link: function(scope, elements, attrs) {
+
+            console.log("Linking . . .");
+            console.log(scope)
+            console.log(elements);
+            if (true) {
+                elements.removeAttr('class')
+            };
+        }
+    };
+});
+
+
+// @ means string
+// = means object
+// & means function
